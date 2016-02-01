@@ -8,11 +8,11 @@ public class TestInterrupt {
 		TestInterrupt test = new TestInterrupt();
 		MyThread thread = test.new MyThread();
 		thread.start();
-//		try {
-//			Thread.currentThread().sleep(2000);
-//		} catch (InterruptedException e) {
-//
-//		}
+		try {
+			Thread.currentThread().sleep(2000);
+		} catch (InterruptedException e) {
+
+		}
 		thread.interrupt();
 	}
 
