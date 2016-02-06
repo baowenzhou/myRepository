@@ -84,6 +84,9 @@ class Student implements Runnable,Delayed{
     @Override
     public void run() {
         // TODO Auto-generated method stub
+        System.out.println(name+" 线程ID："+Thread.currentThread().getId());
+
+    	
         if (isForce) {
             System.out.println(name + " 交卷, 希望用时" + workTime + "分钟"+" ,实际用时 120分钟" );
         }else {
@@ -123,10 +126,17 @@ class EndExam extends Student{
         
         teacherThread.interrupt();
         Student tmpStudent;
+        
+        int i=0;
+
         for (Iterator<Student> iterator2 = students.iterator(); iterator2.hasNext();) {
+
+        	
             tmpStudent = iterator2.next();
             tmpStudent.setForce(true);
             tmpStudent.run();
+        	System.out.print(i++);
+
         }
         countDownLatch.countDown();
     }
@@ -145,9 +155,24 @@ class Teacher implements Runnable{
         // TODO Auto-generated method stub
         try {
             System.out.println(" test start");
-            while(!Thread.interrupted()){
+            int i=0;
+            while(!Thread.interrupted()){//考试结束时，阻塞进程
                 students.take().run();
+            	System.out.print(i++);
+
             }
+            
+            
+//            Student student = null;
+//            while(true) {
+//            	student = students.take();
+//            	new Thread(student).start();
+//            	
+//            	
+//            	if (students.size() == 0) {
+//            		break;
+//            	}
+//            }
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
