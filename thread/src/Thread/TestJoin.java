@@ -11,7 +11,7 @@ public class TestJoin {
 		thread1.start();
 		try {
 			System.out.println("线程" + Thread.currentThread().getName() + "等待");
-			thread1.join();
+			thread1.join();// 先执行完子线程
 			System.out
 					.println("线程" + Thread.currentThread().getName() + "继续执行");
 		} catch (InterruptedException e) {

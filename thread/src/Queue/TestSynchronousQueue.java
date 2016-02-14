@@ -3,6 +3,7 @@ package Queue;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 
 public class TestSynchronousQueue {
@@ -52,6 +53,8 @@ public class TestSynchronousQueue {
 
 	public static void main(String[] args) {
 		BlockingQueue<String> q=new SynchronousQueue<String>();
+//		BlockingQueue<String> q=new LinkedBlockingQueue<String>();
+
 		TestSynchronousQueue t=new TestSynchronousQueue();
 		new Thread(t.new Consumer(q)).start();
 		new Thread(t.new Producer(q)).start();
