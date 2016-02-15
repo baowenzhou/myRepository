@@ -1,4 +1,4 @@
-package Lock;
+package Synchronized;
 
 /**
 * 创建一个汉堡包盒子的类
@@ -123,7 +123,7 @@ class Hassistant extends Thread
 	}
 }
 
-public class TestLock4
+public class TestHam
 {
 	public static void main(String[] args)
 	{
